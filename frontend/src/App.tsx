@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {Main} from "./pages/main";
+import {InitialTask, Task} from "./pages/task";
+import {Registration} from "./pages/registration";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Main/>,
+    },
+    {
+        path: "/registration",
+        element: <Registration/>,
+    },
+    {
+        path: "/tasks",
+        element: <InitialTask/>,
+    },
+    {
+        path: "/tasks/:id",
+        element: <Task/>,
+    },
+])
+
+const App = () => (
+    <RouterProvider router={router}/>
+)
 
 export default App;
